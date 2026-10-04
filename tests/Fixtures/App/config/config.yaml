@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Wexample\SymfonyCheck\Tests\Fixtures\Checker\:
+    resource: '../../Checker'
+    exclude: '../../Checker/Order.php'

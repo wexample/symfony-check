@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Wexample\SymfonyCheck\Command\:
+        resource: '../../Command'
+
+    Wexample\SymfonyCheck\Service\CheckService:
+        public: true
+        arguments:
+            $checkers: !tagged_iterator wexample_symfony_check.checker
+            $providers: !tagged_iterator wexample_symfony_check.subject_provider
