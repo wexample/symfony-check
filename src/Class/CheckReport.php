@@ -66,6 +66,7 @@ final class CheckReport implements Countable
             foreach ($entry['findings'] as $finding) {
                 if ($finding->severity->isAtLeast($atLeast)) {
                     $subjects[] = $entry['subject'];
+
                     break;
                 }
             }
