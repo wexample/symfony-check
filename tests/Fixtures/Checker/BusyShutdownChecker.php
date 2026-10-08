@@ -2,8 +2,8 @@
 
 namespace Wexample\SymfonyCheck\Tests\Fixtures\Checker;
 
-use Wexample\SymfonyCheck\Class\Shutdown;
 use Wexample\SymfonyCheck\Class\Finding;
+use Wexample\SymfonyCheck\Class\Shutdown;
 use Wexample\SymfonyCheck\Interface\CheckerInterface;
 
 class BusyShutdownChecker implements CheckerInterface
