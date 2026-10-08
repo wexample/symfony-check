@@ -2,15 +2,15 @@
 
 namespace Wexample\SymfonyCheck\Provider;
 
-use Wexample\SymfonyCheck\Class\Deployment;
+use Wexample\SymfonyCheck\Class\Shutdown;
 use Wexample\SymfonyCheck\Interface\SubjectProviderInterface;
 
 /**
- * The one subject of `check:run deployment`.
+ * The one subject of `check:run shutdown`.
  */
-class DeploymentSubjectProvider implements SubjectProviderInterface
+class ShutdownSubjectProvider implements SubjectProviderInterface
 {
-    public const string KEY = 'deployment';
+    public const string KEY = 'shutdown';
 
     public function getKey(): string
     {
@@ -19,6 +19,6 @@ class DeploymentSubjectProvider implements SubjectProviderInterface
 
     public function getSubjects(): iterable
     {
-        yield new Deployment();
+        yield new Shutdown();
     }
 }
