@@ -7,6 +7,9 @@ services:
     Wexample\SymfonyCheck\Command\:
         resource: '../../Command'
 
+    Wexample\SymfonyCheck\Provider\:
+        resource: '../../Provider'
+
     Wexample\SymfonyCheck\Service\CheckService:
         public: true
         arguments:
