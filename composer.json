@@ -22,6 +22,8 @@
   ],
   "require": {
     "php": ">=8.5",
+    "symfony/http-kernel": "^7.4 || ^8.0",
+    "symfony/property-access": "^7.4 || ^8.0",
     "wexample/symfony-helpers": ">=15.0.0"
   },
   "require-dev": {

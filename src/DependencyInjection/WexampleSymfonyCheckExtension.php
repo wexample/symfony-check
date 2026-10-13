@@ -4,6 +4,7 @@ namespace Wexample\SymfonyCheck\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Wexample\SymfonyCheck\Interface\CheckerInterface;
+use Wexample\SymfonyCheck\Interface\RemedyProviderInterface;
 use Wexample\SymfonyCheck\Interface\SubjectProviderInterface;
 use Wexample\SymfonyHelpers\DependencyInjection\AbstractWexampleSymfonyExtension;
 
@@ -12,6 +13,8 @@ class WexampleSymfonyCheckExtension extends AbstractWexampleSymfonyExtension
     public const string TAG_CHECKER = 'wexample_symfony_check.checker';
 
     public const string TAG_SUBJECT_PROVIDER = 'wexample_symfony_check.subject_provider';
+
+    public const string TAG_REMEDY_PROVIDER = 'wexample_symfony_check.remedy_provider';
 
     public function load(
         array $configs,
@@ -25,6 +28,10 @@ class WexampleSymfonyCheckExtension extends AbstractWexampleSymfonyExtension
         $container
             ->registerForAutoconfiguration(SubjectProviderInterface::class)
             ->addTag(self::TAG_SUBJECT_PROVIDER);
+
+        $container
+            ->registerForAutoconfiguration(RemedyProviderInterface::class)
+            ->addTag(self::TAG_REMEDY_PROVIDER);
 
         $this->loadConfig(
             __DIR__,

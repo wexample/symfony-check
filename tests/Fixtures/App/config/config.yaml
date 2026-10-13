@@ -6,3 +6,7 @@ services:
   Wexample\SymfonyCheck\Tests\Fixtures\Checker\:
     resource: '../../Checker'
     exclude: '../../Checker/Order.php'
+
+  Wexample\SymfonyCheck\Tests\Fixtures\Gate\InvoiceCreationChecker: ~
+
+  Wexample\SymfonyCheck\Tests\Fixtures\Gate\SheetValueChecker: ~

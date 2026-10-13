@@ -39,6 +39,21 @@ final readonly class Finding
     }
 
     /**
+     * The reverse of toArray(), for a finding read back from storage or a url.
+     *
+     * @param array{code: string, severity?: string, parameters?: array<string, scalar|null>, domain?: string} $data
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            (string) $data['code'],
+            Severity::tryFrom((string) ($data['severity'] ?? '')) ?? Severity::Error,
+            array_filter($data['parameters'] ?? [], is_scalar(...)),
+            (string) ($data['domain'] ?? 'check'),
+        );
+    }
+
+    /**
      * @return array{code: string, severity: string, parameters: array<string, scalar|null>, domain: string}
      */
     public function toArray(): array
