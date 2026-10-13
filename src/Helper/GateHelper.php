@@ -26,11 +26,24 @@ class GateHelper
     ): array {
         return $remedy->routeParameters + [
             self::QUERY_FINDINGS => array_map(
-                fn (Finding $finding) => $finding->toArray(),
+                fn (Finding $finding) => self::compact($finding),
                 $remedy->findings
             ),
             self::QUERY_DESTINATION => $destination,
         ];
+    }
+
+    /**
+     * A finding as short as a url allows: the severity and the default domain
+     * are what Finding::fromArray() assumes when they are left out.
+     */
+    private static function compact(Finding $finding): array
+    {
+        return array_filter([
+            'code' => $finding->code,
+            'parameters' => $finding->parameters,
+            'domain' => 'check' === $finding->domain ? null : $finding->domain,
+        ]);
     }
 
     /**
