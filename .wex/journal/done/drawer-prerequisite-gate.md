@@ -1,7 +1,7 @@
 # Prerequisite gate: redirect to the form that is missing data, highlight the missing fields
 
 Opened: 2026-10-09
-Updated: 2026-10-09
+Updated: 2026-10-13
 Author: agent:archeology-drawers
 
 ## Read this first — status of this todo
@@ -32,3 +32,17 @@ A "checker" declared conditions an action requires. When one failed, the user wa
 ## Open questions
 
 Is the "redirect to complete your profile" UX wanted, or rather an inline modal (symfony-loader) asking only for the missing fields?
+
+## Done (2026-10-13)
+
+Discussed with the owner, the proposed shape was changed: the gate does not rest on forms. The action is a subject of its own (`new InvoiceCreation($org)`), checked by ordinary checkers; what lifts the findings is a remedy given by a separate provider; the gate assumes no rendering. Answer to the open question: redirect or modal is decided by whoever catches the gate, not by the gate.
+
+- `symfony-check` (`e01d8c4`, `4846e20`): `GateService::evaluate()` / `guard()`, `GateVerdict`, `GateClosedException` (403 if uncaught), `RemedyProviderInterface`, `RouteRemedy`, `AutomaticRemedyInterface` (applied by `guard()`), `AbstractRequiredFieldsChecker` (dotted paths, the legacy case), `GateClosedExceptionSubscriber` (page request redirected to the remedy with `gate` + `redirect`, json left with the 403), `GateHelper` (refuses an off-site destination).
+- `symfony-forms` (`50d1db4`): a form reached by a gate points at the missing fields with its own texts (`assets/common/gate.trans.yml`), and once valid sends back to the stopped action.
+- `symfony-design-system-demo` (`46852cd`): Forms → « Gated action », the full loop checked over HTTP in the showcase.
+
+## Left
+
+- `symfony-forms/composer.lock`: rewritten by `composer require` (stale lock), not committed.
+- Raise the `wexample/symfony-check` constraint in forms and the demo once a version with the gate is published.
+- The real invoice rule (title, SIRET, bank details, address) in `symfony-accounting`, on `AbstractRequiredFieldsChecker`.
