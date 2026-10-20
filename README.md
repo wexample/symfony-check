@@ -1,6 +1,6 @@
 # symfony-check
 
-Version: 4.0.2
+Version: 4.0.3
 
 ## Checkers
 
@@ -104,7 +104,7 @@ The suite includes packages for configuration management, file handling, prompts
 - php: >=8.5
 - symfony/http-kernel: ^7.4 || ^8.0
 - symfony/property-access: ^7.4 || ^8.0
-- wexample/symfony-helpers: >=17.0.0
+- wexample/symfony-helpers: >=18.0.0
 
 ## Versioning & Compatibility Policy
 
