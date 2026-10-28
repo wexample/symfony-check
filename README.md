@@ -1,6 +1,6 @@
 # symfony-check
 
-Version: 4.0.4
+Version: 4.0.5
 
 Non-blocking checks on any object: checkers report findings with a severity, aggregated per subject
 
